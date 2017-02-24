@@ -289,16 +289,16 @@ function handleClose(streams, children, childrenInfo) {
         if (config.killOthers && !othersKilled) {
             othersKilled = true
             // Give other processes some time to stop cleanly before killing them
-            var delayedExit = closeStream.delay(config.killDelay);
+            // var delayedExit = closeStream.delay(config.killDelay);
 
-            delayedExit.subscribe(function() {
+            // delayedExit.subscribe(function() {
                 logEvent('--> ', chalk.gray.dim, 'Sending SIGTERM to other processes..');
 
                 // Send SIGTERM to alive children
                 _.each(aliveChildren, function(child) {
                     treeKill(child.pid, 'SIGTERM');
                 });
-            });
+            // });
         }
     });
 
